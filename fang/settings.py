@@ -49,15 +49,17 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'fang.middlewares.FangSpiderMiddleware': 543,
-#}
+# SPIDER_MIDDLEWARES = {
+#    'fang.middlewares.RandomProxyMiddleware': 543,
+# }
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'fang.middlewares.FangDownloaderMiddleware': 543,
-#}
+
+#       ====================开启代理===================
+DOWNLOADER_MIDDLEWARES = {
+   'fang.middlewares.RandomProxyMiddleware': 543,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -67,6 +69,8 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+# =========================开启数据库 =======================
+
 ITEM_PIPELINES = {
    'fang.pipelines.MongoPipeline': 300,
 }
@@ -93,3 +97,4 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 MONGO_URL = 'localhost'
 MONGO_DATABASE = 'szfangyuan'
+REDIS_URL = 'localhost'

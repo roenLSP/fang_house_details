@@ -33,3 +33,4 @@ class MongoPipeline(object):
     def process_item(self, item, spider):
         self.db[self.collection_name].insert(dict(item))
         return item
+

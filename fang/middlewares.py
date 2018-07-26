@@ -4,8 +4,15 @@
 #
 # See documentation in:
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import random
+
+import logging
+import redis
 
 from scrapy import signals
+
+
+from fang.settings import REDIS_URL
 
 
 class FangSpiderMiddleware(object):
@@ -101,3 +108,19 @@ class FangDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+import requests
+
+PROXY_POOL_URL = 'http://127.0.0.1:5555/random'
+
+
+class RandomProxyMiddleware(object):
+    # 动态设置ip代理
+
+    def process_request(self, request, spider):
+
+        proxy_ip = requests.get(PROXY_POOL_URL).text
+
+        request.meta["proxy"] = 'http://' + proxy_ip
+        print('==============正在使用代理IP{}================================='.format(proxy_ip))
