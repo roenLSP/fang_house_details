@@ -25,7 +25,7 @@ class SzfySpider(scrapy.Spider):
         total_price = response.xpath('//div[@class="tab-cont-right"]/div[@class="tr-line clearfix zf_new_title"]/div[@class="trl-item_top"]/div[@class="trl-item price_esf  sty1"]/i/text()').extract()[0].strip()
         house_type = response.xpath('//div[@class="tab-cont-right"]/div[@class="tr-line clearfix"]/div[@class="trl-item1 w146"]/div[@class="tt"]/text()').extract()[0].strip()
         size = response.xpath('//div[@class="tab-cont-right"]/div[@class="tr-line clearfix"]/div[@class="trl-item1 w182"]/div[@class="tt"]/text()').extract()[0].strip()
-
+            
         chaoxiang = response.xpath('/html/body/div[5]/div[1]/div[4]/div[3]/div[1]/div[1]/text()').extract()[0].strip()
         building_type = response.xpath('/html/body/div[5]/div[1]/div[4]/div[3]/div[2]/div[1]/text()').extract()[0].strip()
         name = response.xpath('//*[@id="agantesfxq_C03_05"]/text()').extract()[0].strip()
@@ -46,4 +46,8 @@ class SzfySpider(scrapy.Spider):
         item['building_time'] = building_time
         item['price'] = price
         yield item
+        
+        
+        #+++++++++++++++++++++++++++++测试++++++++++++++++++++++++++++++++++++
+        #+++++++++++++++++++++++++++++测试+++++++++++++++++++++++++++++++++++
 
