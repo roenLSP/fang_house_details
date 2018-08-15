@@ -118,7 +118,7 @@ PROXY_POOL_URL = 'http://127.0.0.1:5555/random'
 class RandomProxyMiddleware(object):
     # 动态设置ip代理
 
-    def process_request(self, request, spider):
+    def process_request(self, request,spider):
 
         proxy_ip = requests.get(PROXY_POOL_URL).text
 

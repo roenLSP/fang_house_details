@@ -12,9 +12,7 @@ class SzfySpider(scrapy.Spider):
     start_urls = ['http://esf.sz.fang.com/']
     url = 'http://esf.sz.fang.com'
 
-    def parse(self, response,count=0):
-        count += 1
-        print('+++++++++++++++++++++++++++正在爬取第{:d}页+++++++++++++++++++++++++++++++'.format(count))
+    def parse(self, response):
 
         try:
             hrefs = response.xpath('//dl[@class="clearfix"]/dd/h4[@class="clearfix"]/a/@href').extract()
